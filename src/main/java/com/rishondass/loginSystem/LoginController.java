@@ -26,7 +26,10 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
-
+    @RequestMapping("/")
+    public String returnToLogin(){
+        return "redirect:/logout";
+    }
     @RequestMapping("/admin")
     public String admin(Model model){
         /*List<CompanyModel> companies = jdbcTemplate.query(
