@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employees' List</title>
+</head>
+<body>
+<div class="container text-center">
+  <div>
+    <form th:action="@{/admin}" method="post">
+      <h1>List of Employees</h1>
+      <input type="submit" value="Back" />
+    </form>
+  </div>
+
+  <div>
+    <table>
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>SSN</th>
+        <th>FirstName</th>
+        <th>LastName</th>
+        <th>Job Title</th>
+        <th>Performance</th>
+        <th>Addresses</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="employee: ${listEmployees}">
+        <td th:text="${employee.getEmployeeID()}">Employee ID</td>
+        <td th:text="${employee.getSsn()}">Employee SSN</td>
+        <td th:text="${employee.getFirstName()}">Employee FirstName</td>
+        <td th:text="${employee.getLastName()}">Employee LastName</td>
+        <td th:text="${employee.getJobTitle()}">Employee JobTitle</td>
+        <td th:text="${employee.getJobPerformance()}">Employee Performance</td>
+        <td>
+          <table>
+            <tr th:each="address: ${employee.getAddresses()}">
+              <td th:text="${address.toString()}">Employee Address</td>
+            </tr>
+          </table>
+        </td>
+
+
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</body>
+</html>
