@@ -1,18 +1,25 @@
 package com.rishondass.loginSystem.payroll.Models;
 
+
+
+
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
 
 @Entity
 @Table(name="employee",schema="payroll")
-public class EmployeeModel {
+public class EmployeeModel implements Serializable {
+
     @Id
     @Column(name="employeeid")
-    private int employeeID;
+    public int employeeID;
 
     @Column(name="ssn")
-    private String ssn;
+    @Pattern(message="Invalid SSN Format", regexp = "^[0-9]{3}-[0-9]{2}-[0-9]{4}$")
+    public String ssn;
 
     @Column(name="firstname")
     private String firstName;
@@ -26,7 +33,7 @@ public class EmployeeModel {
     @Column(name="jobperformance")
     private String jobPerformance;
 
-    @OneToMany(cascade=CascadeType.ALL,targetEntity = AddressModel.class, mappedBy = "employeeID",orphanRemoval = true,fetch = FetchType.LAZY)
+    @OneToMany(cascade=CascadeType.ALL,targetEntity = AddressModel.class, mappedBy = "employeeID",fetch = FetchType.LAZY)
     private Set<AddressModel> addresses;
 
     public Set<AddressModel> getAddresses() {

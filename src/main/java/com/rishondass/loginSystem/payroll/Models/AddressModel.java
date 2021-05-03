@@ -4,9 +4,10 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-@Table(name="address",schema="payroll")
+@Table(name="addresses",schema="payroll")
 public class AddressModel {
     @Id
     @Column(name="address")
@@ -27,11 +28,14 @@ public class AddressModel {
     @Column(name="employeeid")
     private int employeeID;
 
+
     @ManyToOne(fetch= FetchType.LAZY)
+    /*@JoinColumn(name = "employeeID", insertable = false, updatable = false)
+    @JoinColumn(name = "ssn", insertable = false, updatable = false)*/
+
     @JoinColumns({
-            @JoinColumn(name = "employeeID", insertable = false, updatable = false),
-/*            @JoinColumn(name = "ssn", insertable = false, updatable = false)*/
-    })
+            @JoinColumn(name = "employeeID",referencedColumnName = "employeeid", insertable=false, updatable=false),
+            /*@JoinColumn(name = "ssn", referencedColumnName = "ssn", insertable=false, updatable=false) */})
     @Fetch(FetchMode.JOIN)
     private EmployeeModel employeeModel;
 
