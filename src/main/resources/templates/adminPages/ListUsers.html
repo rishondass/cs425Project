@@ -33,17 +33,17 @@
         <td th:text="${user.getUsername()}">User Name</td>
         <td th:text="${user.getRole()}">Role</td>
         <td>
-          <form th:action="@{'/admin/edit/' + ${user.getUser_id()}}" th:object="${user}" method="post">
-            <input type="hidden" name="users_id" th:value="${user.getUser_id()}">
+          <form th:action="@{'/admin/edit/' + ${user.getUser_id()}}"  method="post">
+<!--            <input type="hidden" name="users_id" th:value="${user.getUser_id()}">
             <input type="hidden" name="username" th:value="${user.getUsername()}">
             <input type="hidden" name="password" th:value="${user.getPassword()}">
             <input type="hidden" name="role" th:value="${user.getRole()}">
-            <input type="hidden" name="enabled" th:value="${user.getEnabled()}">
+            <input type="hidden" name="enabled" th:value="${user.getEnabled()}">-->
             <button type="submit">Edit</button>
           </form>
         </td>
         <td>
-          <form th:action="@{'/admin/delete/'+ ${user.getUser_id()}}" th:object="${user}" method="post">
+          <form th:action="@{'/admin/delete/'+ ${user.getUser_id()}}" th:object="${address}" method="post">
             <button type="submit">Delete</button>
           </form>
         </td>

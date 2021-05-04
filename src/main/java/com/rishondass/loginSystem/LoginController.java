@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -26,9 +28,11 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping("/")
-    public String returnToLogin(){
-        return "redirect:/logout";
+    @RequestMapping(name="/",method=RequestMethod.GET)
+    public String returnToLogin(HttpServletRequest request){
+        HttpSession session = request.getSession();
+        session.invalidate();
+        return "redirect:@{/logout}";
     }
     @RequestMapping("/admin")
     public String admin(Model model){
