@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name="stateTaxRate",schema="payroll")
+@Table(name="federalTaxRate",schema="payroll")
 public class EmployeeModel {
     @Id
     @Column(name="taxRate")
