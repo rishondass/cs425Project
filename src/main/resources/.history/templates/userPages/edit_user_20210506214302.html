@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+  <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+  <link href="../../static/edit.css" th:href="@{/edit.css}" rel="stylesheet" />
+  <title>Edit User</title>
+</head>
+<body>
+<div class="container">
+  <h1 id="pageTitle">Edit User</h1>
+  <form id="cancel" th:action="@{/user/ListUsers}">
+    <button type="submit">Cancel</button>
+  </form>
+  <form id="save" th:action="@{/user/save}" th:object="${user}" method="post">
+    <table id="table">
+      <tr>
+        <td>EmployeeID:</td>
+        <td>
+          <input type="text" th:field="*{user_id}" readonly="readonly">
+        </td>
+      </tr>
+      <tr>
+        <td>Username:</td>
+        <td>
+          <input type="text" name="username" th:value="${user.getUsername()}" th:field="*{username}" required>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Password:
+        </td>
+        <td>
+          <input type="text" name="password" th:value="${user.getPassword()}" th:field="*{password}" required>
+        </td>
+      </tr>
+    </table>
+    <button type="submit">Save</button>
+  </form>
+</div>
+</body>
+</html>

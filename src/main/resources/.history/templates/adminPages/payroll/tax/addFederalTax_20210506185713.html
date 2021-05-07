@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <link href="../../../../static/add.css" th:href="@{/add.css}" rel="stylesheet" />
+    <title>Add Federal Tax</title>
+</head>
+<body>
+    <div class="container">
+<div>
+    <form th:align="center" th:action="@{/admin/ListTaxInformation}">
+        <button type="submit">Cancel</button>
+    </form>
+</div>
+<div th:align="center">
+    <div><h1>Add Federal Tax</h1></div>
+    <div>
+        <form th:action="@{/admin/ListTaxInformation/processFederalTax}" th:object="${federalTax}">
+            <table>
+                <tbody>
+                <tr>
+                    <td>
+                        State: 
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        Year: <input required th:field="${federalTax.year}">
+                    </td>
+
+
+                </tr>
+                <tr>
+                    <td>
+                        Rate: <input required th:field="${federalTax.taxRate}">
+                    </td>
+
+
+                </tr>
+                <tr>
+                    <td>
+                        <button type="submit">Add</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+
+    </div>
+</div>
+</div>
+</body>
+</html>

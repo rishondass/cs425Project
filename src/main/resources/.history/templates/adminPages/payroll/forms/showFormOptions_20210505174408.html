@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <title>Form/Tax Information</title>
+</head>
+<body>
+<div>
+    <form th:align="center" th:action="@{/admin/ListEmployees/}">
+        <button type="submit">Back</button>
+    </form>
+</div>
+<div th:align="center">
+    <h1 th:text="${currentUser.getFirstName()} +'\'s Generation Options'"></h1>
+</div>
+<div>
+    <div th:align="center">
+        <h1>Pay Check</h1>
+    </div>
+    <div th:align="center">
+        <form th:action="@{'/admin/ListEmployees/showEmployeeForms/addPayCheck/'+${currentUser.employeeID}}">
+            <button type="submit">Generate Paycheck</button>
+        </form>
+    </div>
+    <div th:align="center">
+        <table>
+            <tr th:each="paycheck: ${listPayChecks}">
+                <td>
+                    <form th:action="@{'/admin/ListEmployees/showEmployeeForms/generatePayCheck/' + ${currentUser.employeeID} +'/' +${paycheck.getConcatDateRange()}}" th:object="${paycheck}">
+                        <button type="submit" th:text="${paycheck.getDateRange()}"></button>
+                    </form>
+                </td>
+                <td>
+                    <form th:action="@{'/admin/ListEmployees/showEmployeeForms/deleteCheck/' + ${currentUser.employeeID} +'/' +${paycheck.getConcatDateRange()}}" th:object="${paycheck}">
+                        <button type="submit" th:text="Delete"></button>
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+<div>
+    <div th:align="center">
+        <h1>W2</h1>
+    </div>
+    <div th:align="center">
+        <form th:action="@{'/admin/ListEmployees/showEmployeeForms/addW2/'+${currentUser.employeeID}}">
+            <button type="submit">Generate W2</button>
+        </form>
+    </div>
+    <div th:align="center">
+        <table>
+            <tr th:each="w2: ${w2s}">
+                <td>
+                    <form th:action="@{'/admin/ListEmployees/showEmployeeForms/generateW2/' + ${currentUser.employeeID} +'/' +${w2.getDateRange()}}" th:object="${w2}">
+                        <button type="submit" th:text="${w2.getDateRange()}"></button>
+                    </form>
+                </td>
+                <td>
+                    <form th:action="@{'/admin/ListEmployees/showEmployeeForms/deleteW2/' + ${currentUser.employeeID} +'/' +${w2.getDateRange()}}" th:object="${w2}">
+                        <button type="submit" th:text="Delete"></button>
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+<div>
+    <div th:align="center">
+        <h1>Expense Reports</h1>
+    </div>
+    <div th:align="center">
+        <form th:action="@{'/admin/ListEmployees/showEmployeeForms/addExpenseReport/'+${currentUser.employeeID}}">
+            <button type="submit">Generate Expense Report</button>
+        </form>
+    </div>
+    <div th:align="center">
+        <table>
+            <tr th:each="expenseReport: ${expenseReports}">
+                <td>
+                    <form th:action="@{'/admin/ListEmployees/showEmployeeForms/generateExpenseReport/' + ${currentUser.employeeID} +'/' +${expenseReport.dateRange}}" th:object="${expenseReport}">
+                        <button type="submit" th:text="${expenseReport.dateRange}"></button>
+                    </form>
+                </td>
+                <td>
+                    <form th:action="@{'/admin/ListEmployees/showEmployeeForms/deleteExpenseReport/' + ${currentUser.employeeID} +'/' +${expenseReport.getDateRange()}}" th:object="${expenseReport}">
+                        <button type="submit" th:text="Delete"></button>
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+
+</body>
+</html>

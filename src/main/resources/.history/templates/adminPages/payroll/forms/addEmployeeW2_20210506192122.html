@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <link href="../../../../static/add.css" th:href="@{/add.css}" rel="stylesheet" />
+
+    <title>Add W2</title>
+</head>
+<body>
+<div class="container">
+<div th:align="center">
+    <h1 id="pageTitle">Add W2</h1>
+</div>
+<div>
+    <form id="cancel" th:align="center" th:action="@{'/admin/ListEmployees/showEmployeeForms/' + ${currentUser.getEmployeeID()}}">
+        <button type="submit">Cancel</button>
+    </form>
+</div>
+</div>
+<div th:align="center">
+    <form th:action="@{'/admin/ListEmployees/showEmployeeForms/processW2/' + ${currentUser.employeeID}}" th:object="${w2}">
+        <table>
+            <tr>
+                <select id="year" th:field="${w2.dateRange}" ></select>
+                <script>
+                    var start = 1900;
+                    var end = new Date().getFullYear();
+                    var options = "";
+                    for(var year = start ; year <=end; year++){
+                        options += "<option>"+ year +"</option>";
+                    }
+                    document.getElementById("year").innerHTML = options;
+                </script>
+            </tr>
+
+            <tr>
+                <td>
+                    <button type="submit">Generate</button>
+                </td>
+            </tr>
+        </table>
+
+
+    </form>
+</div>
+</body>
+</html>

@@ -1,15 +1,16 @@
 package com.rishondass.loginSystem.payroll.Models;
 
-import javax.persistence.*;
-import java.util.List;
-import java.util.Set;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-@Table(name="federalTaxRate",schema="payroll")
-public class EmployeeModel {
+@Table(name="federaltax",schema="payroll")
+public class FederalTaxModel {
     @Id
-    @Column(name="taxRate")
-    private int taxRate;
+    @Column(name="taxrate")
+    private double taxRate;
 
     @Column(name="country")
     private String country;
@@ -17,30 +18,27 @@ public class EmployeeModel {
     @Column(name="year")
     private int year;
 
-    //@OneToMany(cascade=CascadeType.ALL,targetEntity = AddressModel.class, mappedBy = "employeeID",orphanRemoval = true,fetch = FetchType.LAZY)
-    //private Set<AddressModel> addresses;
-
-    public void setTaxRate(int taxRate) {
-        this.taxRate = taxRate;
-    }
-
-    public String getTaxRate() {
+    public double getTaxRate() {
         return taxRate;
     }
 
-    public void setcountry(String country) {
+    public void setTaxRate(double taxRate) {
+        this.taxRate = taxRate;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
         this.country = country;
     }
 
-    public String getcountry() {
-        return country;
+    public int getYear() {
+        return year;
     }
 
     public void setYear(int year) {
         this.year = year;
-    }
-
-    public String getyear() {
-        return year;
     }
 }

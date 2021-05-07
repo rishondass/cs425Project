@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+  <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+  <link href="../../../static/add.css" th:href="@{/add.css}" rel="stylesheet" />
+  <title>Add Benefit</title>
+</head>
+<body>
+<div align="center">
+  <h1 id="pageTitle">Add New Benefit</h1>
+  <form id="cancel" th:action="@{'/admin/ListEmployees/showEmployeeBenefits/' + ${session.currentUser.getEmployeeID()}}">
+      <button type="submit">Cancel</button>
+  </form>
+  <br/>
+  <form  th:action="@{'/admin/ListEmployees/showEmployeeBenefits/processBenefit/' + ${session.currentUser.getEmployeeID()}}" th:object="${benefit}" method="post">
+    <table id="table">
+      <tbody>
+      <tr>
+        <td>Benefit Type:</td>
+        <td><input name="benefitType" th:field="${benefit.benefitType}" required></td>
+      </tr>
+      <tr>
+        <td>Benefit Name:</td>
+        <td><input name="benefitName" th:field="${benefit.benefitName}" required></td>
+      </tr>
+      <tr>
+        <td>Rate ($):</td>
+        <td><input name="rate" th:field="${benefit.rate}" required></td>
+      </tr>
+      <tr>
+        <td>Company Contribution (%):</td>
+        <td><input name="companyContribution" th:field="${benefit.companyContribution}" required></td>
+      </tr>
+      <tr>
+        <td>Number of Family Members (Including Yourself):</td>
+        <td><input name="numFamilyMembers" th:field="${benefit.numFamilyMembers}" required></td>
+      </tr>
+
+      </tbody>
+    </table>
+    <button type="submit">Save</button>
+  </form>
+</div>
+</body>
+</html>
+

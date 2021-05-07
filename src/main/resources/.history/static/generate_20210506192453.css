@@ -1,0 +1,13 @@
+body {
+    background-color:#5cdb95;
+    font-family: sans-serif;
+}
+
+.container{
+    display: grid;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    grid-template-columns: 1fr;
+
+}

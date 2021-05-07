@@ -41,4 +41,8 @@ public class UserService {
         repo.deleteById(id);
     }
 
+    public UserModel getUserByUserName(String username){
+        return  repo.findAllWithUsername(username);
+    }
+
 }

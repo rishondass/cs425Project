@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+  <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+  <link href="../../../static/add.css" th:href="@{/add.css}" rel="stylesheet" />
+  <scrip>
+
+  </scrip>
+  <title>Add Salary Info</title>
+</head>
+<body>
+<div align="center">
+  <h1 id="pageTitle">Add Salary Info</h1>
+  <form th:action="@{'/admin/ListEmployees/showEmployeeSalaries/'+ ${session.currentUser.getEmployeeID()}}">
+      <button type="submit">Cancel</button>
+  </form>
+  <br/>
+  <form  th:object="${salary}" th:action="@{'/admin/ListEmployees/showEmployeeSalaries/processSalary/' + ${session.currentUser.getEmployeeID()}}" method="post">
+    <table>
+      <tr>Year <input name="salary_year" th:field="${salary.year}" pattern="^[0-9]{4}$"></tr>
+      <tr>Salary Base: <input name="salary_base" th:field="${salary.salaryBase}" minlength="3"></tr>
+      <tr>Bonus: <input name="salary_bonus" th:field="${salary.bonus}"></tr>
+      <tr>Salary Type: <input name="salary_type" th:field="${salary.salaryType}"></tr>
+    </table>
+    <button type="submit">Save</button>
+  </form>
+</div>
+</body>
+</html>
+

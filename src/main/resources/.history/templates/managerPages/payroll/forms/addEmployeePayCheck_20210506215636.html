@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <link href="../../../../static/add.css" th:href="@{/add.css}" rel="stylesheet" />
+    <title>Add PayCheck</title>
+</head>
+<body>
+    <div class="container">
+
+<div th:align="center">
+    <h1 id="pageTitle">Add Paycheck</h1>
+</div>
+<div>
+    <form id="cancel" th:align="center" th:action="@{/manager/ListEmployees/}">
+        <button type="submit">Cancel</button>
+    </form>
+</div>
+</div>
+<div th:align="center">
+    <form id="save" style="text-align: center;"  th:action="@{'/manager/ListEmployees/showEmployeeForms/processPayCheck/' + ${currentUser.employeeID}}" th:object="${paycheck}">
+        <table id="table">
+            <tr>
+                <td>Enter Date Range(MM/DD/YYYY-MM/DD/YYYY):</td>
+                <td><input th:field="${paycheck.dateRange}" pattern="^[0-9]{2}/[0-9]{2}/[0-9]{4}-[0-9]{2}/[0-9]{2}/[0-9]{4}$" required></td>
+            </tr>
+
+        </table>
+        <button type="submit">Generate</button>
+
+    </form>
+</div>
+</div>
+</body>
+</html>

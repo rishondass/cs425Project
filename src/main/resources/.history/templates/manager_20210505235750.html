@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <title>Manager Login</title>
+</head>
+<body>
+<div class="container text-center">
+    <div th:align="center">
+        <form th:action="@{/logout}" method="post">
+            <!--<p>
+                Welcome <b><span sec:authentication="user.user_id">Username</span></b>
+            </p>-->
+            <input type="submit" value="Sign Out" />
+        </form>
+    </div>
+    <div th:align="center">
+        <div>
+            <form th:action="@{/user/}">
+                <button type="submit">View Your Information</button>
+            </form>
+        </div>
+        <div>
+            <form th:action="@{/manager/ListEmployees}">
+                <button type="submit">View Your Employee's Information</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

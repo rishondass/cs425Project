@@ -18,6 +18,11 @@ public interface EmployeeRepository extends CrudRepository<EmployeeModel, Intege
     @Query(value = "SELECT * FROM payroll.employee a WHERE a.employeeid=?1",nativeQuery = true)
     List<EmployeeModel> getEmployeeById(int id);
 
+    EmployeeModel getEmployeeModelBySsn(String ssn);
+
+    @Query(value = "SELECT * FROM payroll.employee a WHERE a.mangid=?1",nativeQuery = true)
+    List<EmployeeModel> getEmployeeByMangID(int mangID);
+
     @Transactional
     @Modifying
     @Query(value = "INSERT INTO payroll.employee (ssn,firstname,lastname,jobtitle,jobperformance) VALUES (:ssn,:firstName,:lastName,:jobTitle,:jobPerformance)",nativeQuery = true)

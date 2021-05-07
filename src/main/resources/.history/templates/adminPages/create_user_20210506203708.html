@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+  <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+  <link href="../../static/add.css" th:href="@{/add.css}" rel="stylesheet" />
+  <title>Add User</title>
+</head>
+<body>
+<div class="container">
+  <h1>Add User</h1>
+  <form id="cancel" th:action="@{/admin/ListUsers}">
+    <button type="submit">Cancel</button>
+  </form>
+  <form action="#" th:action="@{/admin/processRegristriation}" th:object="${user}" method="post">
+    <table>
+      <tr>
+        <td></td>
+        <td>
+          <input type="text" name="username" th:value="${username}" th:field="*{username}" required >
+        </td>
+      </tr>
+    </table>
+    
+    <input type="text" name="password" th:value="${password}" th:field="*{password}" required >
+    <!--<input type="text" name="role" th:value="${user.getRole()}" th:field="*{role}">-->
+    <select th:field="*{role}" >
+      <option th:value="ROLE_USER"}>User</option>
+      <option th:value="ROLE_MANAGER"}>Manager</option>
+      <option th:value="ROLE_ADMIN"}>Admin</option>
+    </select>
+    <!--<input type="text" name="enabled" th:value="${user.getEnabled()}" th:field="*{enabled}">-->
+    <select th:field="*{enabled}" >
+      <option th:value="true"}>Enabled</option>
+      <option th:value="false"}>Disabled</option>
+    </select>
+    <button type="submit">Add User</button>
+  </form>
+  
+</div>
+</body>
+</html>

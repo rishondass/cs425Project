@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <link href="../../../static/show.css" th:href="@{/show.css}" rel="stylesheet" />
+    <title>List of Employees</title>
+</head>
+<body>
+<div class="container">
+  <div >
+    
+  </div>
+
+  <div>
+    <h1 id="pageTitle">Your Information</h1>
+    <form  id="back" th:action="@{/user}" method="post">
+      <button type="submit">Back</button>
+    </form>
+    <!--<form id="add" th:action="@{/user/ListEmployees/create}" method="post">
+      <button type="submit">Add New Employee</button>
+    </form>-->
+  </div>
+  <div class="container-item" id="add">
+    <form th:action="@{'/user/ListEmployees/shoEmployeeAddresses/'+ ${employee.getEmployeeID}}">
+      <button type="submit">Addresses</button>
+    </form>
+    <form th:action="@{'/user/ListEmployees/showEmployeeSalaries/' + ${employee.getEmployeeID()}}">
+      <button type="submit">Salaries</button>
+    </form>
+  </div>
+
+  <div th:align="center">
+    <table id="table" class="button">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>SSN</th>
+        <th>FirstName</th>
+        <th>LastName</th>
+        <th>Job Title</th>
+        <th>Performance</th>
+        <th>Addresses</th>
+        <th>Salaries</th>
+        <th>Benefits</th>
+        <th>Dependants</th>
+        <th>Forms/Taxes</th>
+        <th>Edit</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td th:text="${employee.getEmployeeID()}">Employee ID</td>
+        <td th:text="${employee.getSsn()}">Employee SSN</td>
+        <td th:text="${employee.getFirstName()}">Employee FirstName</td>
+        <td th:text="${employee.getLastName()}">Employee LastName</td>
+        <td th:text="${employee.getJobTitle()}">Employee JobTitle</td>
+        <td th:text="${employee.getJobPerformance()}">Employee Performance</td>
+        <td>
+          
+        </td>
+        <td>
+          
+        </td>
+        <td>
+          <form th:action="@{'/user/ListEmployees/showEmployeeBenefits/' + ${employee.getEmployeeID()}}">
+            <button type="submit">Benefits</button>
+          </form>
+        </td>
+        <td>
+          <form th:action="@{'/user/ListEmployees/showEmployeeDependents/' + ${employee.getEmployeeID()}}">
+            <button type="submit">Dependants</button>
+          </form>
+        </td>
+        <td>
+          <form th:action="@{'/user/ListEmployees/showEmployeeForms/' + ${employee.getEmployeeID()}}">
+            <button type="submit">Forms/Taxes</button>
+          </form>
+        </td>
+        <td>
+          <form th:action="@{'/user/ListEmployees/edit/' + ${employee.getEmployeeID()}}">
+            <button type="submit">Edit</button>
+          </form>
+        </td>
+        <!--<td>
+          <form th:action="@{'/user/ListEmployees/delete/' + ${employee.getEmployeeID()}}">
+            <button type="submit">Delete</button>
+          </form>
+        </td>-->
+
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</body>
+</html>

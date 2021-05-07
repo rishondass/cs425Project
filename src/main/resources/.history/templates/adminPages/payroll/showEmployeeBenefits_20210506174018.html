@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+  <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+  <link href="../../../static/show.css" th:href="@{/show.css}" rel="stylesheet" />
+  <title>Dependant List</title>
+</head>
+<body>
+<div>
+<div th:align="center">
+  <h1 id="pageTitle" th:text="${session.currentUser.getFirstName()} + '\'s Benefits'" th:unless="${session == null}">Employee's Name</h1>
+  <form id="back" th:action="@{/admin/ListEmployees}">
+    <button type="submit">Back</button>
+  </form>
+</div>
+<div>
+  <form id="add" th:action="@{'/admin/ListEmployees/showEmployeeBenefits/addBenefit/'+ ${session.currentUser.getEmployeeID()}}" >
+    <button type="submit">Add Benefit</button>
+  </form>
+</div>
+<div align="center">
+
+  <br/>
+  <table style="text-align:center">
+    <thead>
+    <tr>
+      <th>Benefit Type</th>
+      <th>Benefit Name</th>
+      <th>Rate</th>
+      <th>Company Contribution</th>
+      <th>Members</th>
+      <th>Cost Per Family</th>
+      <th>Cost Per Person</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr th:each="benefit: ${benefits}">
+        <td th:text="${benefit.getBenefitType()}">Benefit Type</td>
+        <td th:text="${benefit.getBenefitName()}">Benefit Name</td>
+        <td th:text="'$'+${benefit.getRate()}">Rate</td>
+        <td th:text="${benefit.getCompanyContribution()}+'%'">Company Contribution</td>
+        <td th:text="${benefit.getNumFamilyMembers()}">Members</td>
+        <td th:text="'$'+${benefit.getCostPerFamily()}">Cost Per Family</td>
+        <td th:text="'$'+${benefit.getCostPerPerson()}">Cost Per Person</td>
+        <td>
+          <form th:action="@{'/admin/ListEmployees/showEmployeeBenefits/delete/'+ ${session.currentUser.getEmployeeID()} + '/'+${benefit.getBenefitType()} +'/'+${benefit.getBenefitName()}+'/'+${benefit.getChildSsn()}+'/'+${benefit.getParentSsn()}}" >
+            <button type="submit">Delete</button>
+          </form>
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
+
+</div>
+</body>
+</html>

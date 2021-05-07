@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+  <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+  <link href="../../../static/show.css" th:href="@{/show.css}" rel="stylesheet" />
+  <title>Edit User</title>
+</head>
+<body>
+<div class="container">
+
+<div>
+  <h1 id="pageTitle" style="font-size: 80px;" th:text="${session.currentUser.getFirstName()} + '\'s Addresses'" th:unless="${session == null}">Employee's Name</h1>
+  <form id="back" th:action="@{/admin/ListEmployees}">
+    <button type="submit">Back</button>
+  </form>
+</div>
+<!-- <div>
+  <form id="add" th:action="@{/admin/ListEmployees/showEmployeeAddresses/add}">
+    <button type="submit">Add Address</button>
+  </form>
+</div> -->
+<div align="center">
+
+  <br/>
+  <table id="table" >
+    <tr th:each="address: ${addresses}">
+      <td th:text="${address.toString()}">Employee Address</td>
+      <td>
+        <form class="button" th:action="@{'/admin/ListEmployees/showEmployeeAddresses/edit/' + ${address.getEmployeeID()}+'/'+ ${address.getAddress()}}">
+          <button type="submit">Edit</button>
+        </form>
+      </td>
+      <td>
+        <form class="button"  th:action="@{'/admin/ListEmployees/showEmployeeAddresses/delete/' + ${address.getEmployeeID()}+'/'+ ${address.getAddress()}}">
+          <button type="submit">Delete</button>
+        </form>
+      </td>
+    </tr>
+  </table>
+
+</div>
+</div>
+</body>
+</html>

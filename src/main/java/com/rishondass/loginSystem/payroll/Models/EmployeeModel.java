@@ -33,6 +33,9 @@ public class EmployeeModel implements Serializable {
     @Column(name="jobperformance")
     private String jobPerformance;
 
+    @Column(name="mangid")
+    private int mangID;
+
     @OneToMany(cascade=CascadeType.ALL,targetEntity = AddressModel.class, mappedBy = "employeeID",fetch = FetchType.LAZY)
     private Set<AddressModel> addresses;
 
@@ -86,5 +89,13 @@ public class EmployeeModel implements Serializable {
 
     public void setJobPerformance(String jobPerformance) {
         this.jobPerformance = jobPerformance;
+    }
+
+    public int getMangID() {
+        return mangID;
+    }
+
+    public void setMangID(int mangID) {
+        this.mangID = mangID;
     }
 }

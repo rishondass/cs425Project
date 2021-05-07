@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <link href="../../../static/listUsers.css" th:href="@{/listUsers.css}" rel="stylesheet" />
+    <title>List of Employees</title>
+</head>
+<body>
+<div class="container">
+  <div pageTitle>
+    <h1>List of Employees</h1>
+  </div>
+
+  <div >
+    <form th:action="@{/admin}" method="post">
+      <button type="submit">Back</button>
+    </form>
+    <form th:action="@{/admin/ListEmployees/create}" method="post">
+      <button type="submit">Add New Employee</button>
+    </form>
+  </div>
+
+  <div th:align="center">
+    <table>
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>SSN</th>
+        <th>FirstName</th>
+        <th>LastName</th>
+        <th>Job Title</th>
+        <th>Performance</th>
+        <th>Addresses</th>
+        <th>Salaries</th>
+        <th>Benefits</th>
+        <th>Dependants</th>
+        <th>Froms/Taxes</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="employee: ${listEmployees}">
+        <td th:text="${employee.getEmployeeID()}">Employee ID</td>
+        <td th:text="${employee.getSsn()}">Employee SSN</td>
+        <td th:text="${employee.getFirstName()}">Employee FirstName</td>
+        <td th:text="${employee.getLastName()}">Employee LastName</td>
+        <td th:text="${employee.getJobTitle()}">Employee JobTitle</td>
+        <td th:text="${employee.getJobPerformance()}">Employee Performance</td>
+        <td>
+          <form th:action="@{'/admin/ListEmployees/shoEmployeeAddresses/'+ ${employee.getEmployeeID}}">
+            <button type="submit">Addresses</button>
+          </form>
+        </td>
+        <td>
+          <form th:action="@{'/admin/ListEmployees/showEmployeeSalaries/' + ${employee.getEmployeeID()}}">
+            <button type="submit">Salaries</button>
+          </form>
+        </td>
+        <td>
+          <form th:action="@{'/admin/ListEmployees/showEmployeeBenefits/' + ${employee.getEmployeeID()}}">
+            <button type="submit">Benefits</button>
+          </form>
+        </td>
+        <td>
+          <form th:action="@{'/admin/ListEmployees/showEmployeeDependents/' + ${employee.getEmployeeID()}}">
+            <button type="submit">Dependants</button>
+          </form>
+        </td>
+        <td>
+          <form th:action="@{'/admin/ListEmployees/showEmployeeForms/' + ${employee.getEmployeeID()}}">
+            <button type="submit">Forms/Taxes</button>
+          </form>
+        </td>
+        <td>
+          <form th:action="@{'/admin/ListEmployees/edit/' + ${employee.getEmployeeID()}}">
+            <button type="submit">Edit</button>
+          </form>
+        </td>
+        <td>
+          <form th:action="@{'/admin/ListEmployees/delete/' + ${employee.getEmployeeID()}}">
+            <button type="submit">Delete</button>
+          </form>
+        </td>
+
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</body>
+</html>

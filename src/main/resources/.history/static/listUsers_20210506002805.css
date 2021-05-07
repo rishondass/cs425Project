@@ -1,0 +1,13 @@
+
+body{
+    background-color:#5cdb95;
+}
+
+#pageTitle {
+    color: #db6b5c;
+    font-size: 100px;
+    text-align: center;
+    margin: 0px;
+    font-family: sans-serif;
+    text-transform: uppercase;
+}

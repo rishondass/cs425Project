@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <link href="../../../../static/generate.css" th:href="@{/generate.css}" rel="stylesheet" />
+    <title>Generated W2</title>
+</head>
+<body>
+<div>
+    <form th:align="center" th:action="@{'/admin/ListEmployees/showEmployeeForms/' + ${currentUser.getEmployeeID()}}">
+        <button type="submit">Back</button>
+    </form>
+</div>
+<div th:align="center">
+    <h1 th:text="${currentUser.getFirstName()} +'\'s W2 ('+${w2.getDateRange()}+')'">Name</h1>
+    <h3 th:text="'SSN: ' + ${w2.getSsn()}"></h3>
+    <h2 th:text="'Net Pay: $' + ${w2.getNetIncome()}">SSN</h2>
+    <h3 th:text="'Gross Pay: $' + ${w2.getGrossIncome()}">GrossPay</h3>
+    <h3 th:text="'Tax Cut: -' + ${w2.getTaxCut()} + '%'">TaxCut</h3>
+    <h3 th:text="'Deductions: -$' + ${w2.getTotalDeductions()}">Deductions</h3>
+    <h3 th:text="'Extra Earnings: +' + ${w2.getExtraEarnings()} + '%'"></h3>
+</div>
+
+</div>
+</body>
+</html>

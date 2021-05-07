@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+  <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+  <link href="../../../static/edit.css" th:href="@{/edit.css}" rel="stylesheet" />
+  <title>Edit Employee</title>
+</head>
+<body>
+<div align="center">
+  <h1 id="pageTitle" style="font-size: 80px;">Edit Employee</h1>
+  <form id="cancel" th:action="@{/admin/ListEmployees}">
+      <button type="submit">Cancel</button>
+  </form>
+  <br/>
+  <form id="save" th:action="@{/admin/ListEmployees/save}" th:object="${employee}" method="post">
+    <table id="table">
+      <tbody>
+        <tr>
+          <td>ID:</td>
+          <td><input th:field="${employee.employeeID}" readonly="readonly"></td>
+        </tr>
+        <tr>
+          <td>SSN:</td>
+          <td><input th:field="${employee.ssn}" readonly></td>
+        </tr>
+        <tr>
+          <td>FirstName:</td>
+          <td><input name="fistName" th:field="${employee.firstName}"></td>
+        </tr>
+        <tr>
+          <td>LastName:</td>
+          <td><input name="lastName" th:field="${employee.lastName}"></td>
+        </tr>
+        <tr>
+          <td>Performance: </td>
+          <td><input name="jobPerformance" th:field="${employee.jobPerformance}"></td>
+        </tr>
+        <tr>
+          <td>Job Title:</td>
+          <td><input name="jobTitle" th:field="${employee.jobTitle}"></td>
+        </tr>
+        <tr>
+          <td>Manager Id:</td>
+          <td><input name="mangID" th:field="${employee.mangID}" pattern="^[0-9]{3}-[0-9]{2}-[0-9]{4}$"></td>
+        </tr>
+      </tbody>
+    </table>
+    <button type="submit">Save</button>
+  </form>
+</div>
+</body>
+</html>
+

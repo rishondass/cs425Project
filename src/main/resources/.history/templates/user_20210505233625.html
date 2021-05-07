@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="../static/userCSS.css" th:href="@{/userCSS.css}" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <title>User Login</title>
+</head>
+<body>
+<div class="container">
+    <div class="container-item">
+        <form id="sign-out" th:action="@{/logout}" method="post">
+            <!--<p>
+                Welcome <b><span sec:authentication="user.user_id">Username</span></b>
+            </p>-->
+            <input type="submit" value="Sign Out" />
+        </form>
+    </div>
+    <nav class="container-item" >
+        <nav>
+            <div>
+                <form th:action="@{/user/ListUsers}">
+                    <button type="submit">View Login Information</button>
+                </form>
+            </div>
+            <div>
+                <form th:action="@{/user/ListEmployees}">
+                    <button type="submit">View Your Employee Information</button>
+                </form>
+            </div>
+        </nav>
+        
+    </div>
+</body>
+</html>

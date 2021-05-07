@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <link href="../static/adminCSS.css" th:href="@{/adminCSS.css}" rel="stylesheet" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <title>Admin Login</title>
+</head>
+<body>
+<div class="container">
+    <div class="container-item">
+        <form th:action="@{/logout}" method="post">
+            <h1 id="pageTitle">
+                Welcome <b>Admin!</b>
+            </h1>
+            <input type="submit" value="Sign Out" />
+        </form>
+    </div>
+    <nav class="container-item">
+        <nav id="navigation">
+            <div>
+                <form th:action="@{/admin/ListUsers}">
+                    <button type="submit">ListUsers</button>
+                </form>
+            </div>
+            <div>
+                <form th:action="@{/admin/ListEmployees}">
+                    <button type="submit">List Employees</button>
+                </form>
+            </div>
+            <div>
+                <form th:action="@{/admin/ListTaxInformation}">
+                    <button type="submit">Tax Information</button>
+                </form>
+            </div>
+        </nav>
+        
+    </div>
+</body>
+</html>

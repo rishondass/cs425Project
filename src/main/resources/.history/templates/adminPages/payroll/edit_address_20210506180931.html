@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+  <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+  <link href="../../../static/edit.css" th:href="@{/edit.css}" rel="stylesheet" />
+  <title>Edit Address</title>
+</head>
+<body>
+<div class="container">
+  <h1 id="pageTitle" style="font-size: 80px;">Edit Address</h1>
+  <form th:object="${address}" th:action="@{'/admin/ListEmployees/shoEmployeeAddresses/ '+ ${session.employeeID}}">
+      <button type="submit">Cancel</button>
+  </form>
+  <br/>
+  <form th:action="@{/admin/ListEmployees/showEmployeeAddresses/save}" th:object="${address}" method="post">
+    <table>
+      <tr>
+        <td>Employee ID:</td>
+        <td><input th:field="${address.employeeID}" readonly="readonly"></td>
+      </tr>
+      <tr>
+        <td>Address:</td>
+        <td><input name="address_address" th:field="${address.address}"></td>
+      </tr>
+      <tr>
+        <td>City:</td>
+        <td><input name="adddress_city" th:field="${address.city}"></td>
+      </tr>
+      <tr>
+        <td>State:</td>
+        <td><select th:field="${address.state}">
+          <option value="AL">Alabama (AL)</option>
+          <option value="AK">Alaska (AK)</option>
+          <option value="AZ">Arizona (AZ)</option>
+          <option value="AR">Arkansas (AR)</option>
+          <option value="CA">California (CA)</option>
+          <option value="CO">Colorado (CO)</option>
+          <option value="CT">Connecticut (CT)</option>
+          <option value="DE">Delaware (DE)</option>
+          <option value="DC">District Of Columbia (DC)</option>
+          <option value="FL">Florida (FL)</option>
+          <option value="GA">Georgia (GA)</option>
+          <option value="HI">Hawaii (HI)</option>
+          <option value="ID">Idaho (ID)</option>
+          <option value="IL">Illinois (IL)</option>
+          <option value="IN">Indiana (IN)</option>
+          <option value="IA">Iowa (IA)</option>
+          <option value="KS">Kansas (KS)</option>
+          <option value="KY">Kentucky (KY)</option>
+          <option value="LA">Louisiana (LA)</option>
+          <option value="ME">Maine (ME)</option>
+          <option value="MD">Maryland (MD)</option>
+          <option value="MA">Massachusetts (MA)</option>
+          <option value="MI">Michigan (MI)</option>
+          <option value="MN">Minnesota (MN)</option>
+          <option value="MS">Mississippi (MS)</option>
+          <option value="MO">Missouri (MO)</option>
+          <option value="MT">Montana (MT)</option>
+          <option value="NE">Nebraska (NE)</option>
+          <option value="NV">Nevada (NV)</option>
+          <option value="NH">New Hampshire (NH)</option>
+          <option value="NJ">New Jersey (NJ)</option>
+          <option value="NM">New Mexico (NM)</option>
+          <option value="NY">New York (NY)</option>
+          <option value="NC">North Carolina (NC)</option>
+          <option value="ND">North Dakota (ND)</option>
+          <option value="OH">Ohio (OH)</option>
+          <option value="OK">Oklahoma (OK)</option>
+          <option value="OR">Oregon (OR)</option>
+          <option value="PA">Pennsylvania (PA)</option>
+          <option value="RI">Rhode Island (RI)</option>
+          <option value="SC">South Carolina (SC)</option>
+          <option value="SD">South Dakota (SD)</option>
+          <option value="TN">Tennessee (TN)</option>
+          <option value="TX">Texas (TX)</option>
+          <option value="UT">Utah (UT)</option>
+          <option value="VT">Vermont</option>
+          <option value="VA">Virginia</option>
+          <option value="WA">Washington</option>
+          <option value="WV">West Virginia</option>
+          <option value="WI">Wisconsin</option>
+          <option value="WY">Wyoming</option>
+        </select></td>
+      </tr>
+      <tr>
+        <td>ZipCode:</td>
+        <td><input name="adddress_city" th:field="${address.city}"></td>
+      </tr>
+      <tr>
+
+      </tr>
+      
+      
+    </table>
+    
+    
+   
+    
+    <input name="adddress_zipcode" th:field="${address.zipCode}">
+    <!--<input type="hidden" name="adddress_country" th:value="${address.getCountry()}">-->
+    
+    <button type="submit">Save</button>
+  </form>
+</div>
+</body>
+</html>
+

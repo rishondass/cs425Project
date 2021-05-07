@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <meta charset="UTF-8">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <link href="../../static/listUsers.css" th:href="@{/listUsers.css}" rel="stylesheet" />
+    <title>List Users</title>
+    <SCRIPT type="text/javascript">
+        window.history.forward();
+        function noBack() { window.history.forward(); }
+    </SCRIPT>
+</head>
+<body>
+    
+<div class="container">
+    <h1 id="pageTitle">List of Users</h1>
+    <div class="container-item">
+        <form class="sign-out" th:action="@{/admin}" method="post">
+            
+            <input type="submit" value="Back" />
+        </form>
+    </div>
+    <div class="sign-out">
+        <form class="sign-out" th:action="@{/admin/addUser}" method="post">
+            
+            <input type="submit" value="Add User" />
+        </form>
+    </div>
+
+    <div class="container-item"> 
+        <table id="table">
+            <thead>
+            <tr>
+                <th>User ID</th>
+                <th>User Name</th>
+                <th>Role</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user: ${listUsers}">
+                <td th:text="${user.getUser_id()}">User ID</td>
+                <td th:text="${user.getUsername()}">User Name</td>
+                <td th:text="${user.getRole()}">Role</td>
+                <td>
+                    <form th:action="@{'/admin/edit/' + ${user.getUser_id()}}"  method="post">
+                        <!--            <input type="hidden" name="users_id" th:value="${user.getUser_id()}">
+                                    <input type="hidden" name="username" th:value="${user.getUsername()}">
+                                    <input type="hidden" name="password" th:value="${user.getPassword()}">
+                                    <input type="hidden" name="role" th:value="${user.getRole()}">
+                                    <input type="hidden" name="enabled" th:value="${user.getEnabled()}">-->
+                        <button type="submit">Edit</button>
+                    </form>
+                </td>
+                <td>
+                    <form th:action="@{'/admin/delete/'+ ${user.getUser_id()}}" th:object="${address}" method="post">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+  <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+  <link href="../../../static/show.css" th:href="@{/show.css}" rel="stylesheet" />
+  <title>Edit User</title>
+</head>
+<body>
+<div class="container">
+<div th:align="center">
+  <h1 id="pageTitle" style="font-size: 80px;" th:text="${session.currentUser.getFirstName()} + '\'s Salaries'" th:unless="${session == null}">Employee's Name</h1>
+  <form id="back" th:action="@{/admin/ListEmployees}">
+      <button type="submit">Back</button>
+  </form>
+</div>
+<div id="add">
+  <form th:align="center" th:action="@{'/admin/ListEmployees/showEmployeeSalaries/addSalary/'+ ${session.currentUser.getEmployeeID()}}" >
+    <button type="submit">Add Salary</button>
+  </form>
+</div>
+<div align="center">
+
+  <br/>
+  <table id="table">
+    <thead>
+    <tr>
+      <th>Year</th>
+      <th>Salary Total</th>
+      <th>Salary Base</th>
+      <th>Bonus</th>
+      <th>Salary Type</th>
+      <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr th:each="salary: ${salaries}">
+        <td th:text="$ ${salary.getYear()}">Salary Year</td>
+        <td th:text="$ ${salary.getSalaryTotal()}">Total</td>
+        <td th:text="${salary.getSalaryBase()}">Salary Base</td>
+        <td th:text="${salary.getBonus()} + '%">Bonus Amount</td>
+        <td th:text="${salary.getSalaryType()}">Salary Type</td>
+        <td>
+          <form class="button" th:action="@{'/admin/ListEmployees/showEmployeeAddresses/deleteAddress/' + ${salary.getSalaryBase()} +'/' +${salary.getYear()}+ '/' + ${salary.getEmployeeID()}}">
+            <button type = "submit">Delete</button>
+          </form>
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
+
+</div>
+</div>
+</body>
+</html>

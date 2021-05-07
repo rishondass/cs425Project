@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <link href="../../../../static/generate.css" th:href="@{/generate.css}" rel="stylesheet" />
+    <title>Form/Tax Information</title>
+</head>
+<body>
+    <div class="container">
+<div>
+    <form id="back" th:align="center" th:action="@{'/admin/ListEmployees/showEmployeeForms/' + ${currentUser.getEmployeeID()}}">
+        <button type="submit">Back</button>
+    </form>
+</div>
+<div th:align="center">
+    <h1 th:text="${currentUser.getFirstName()} +'\'s PayCheck ('+${paycheck.getDateRange()}+')'">Name</h1>
+    <h3 th:text="'SSN: ' + ${paycheck.getSsn()}">SSnN</h3>
+    <h2 th:text="'Net Pay: $' + ${paycheck.getCheckTotal()}">NetPay</h2>
+    <h3 th:text="'Gross Pay: $' + ${paycheck.getGrossIncome()}">GrossPay</h3>
+    <h3 th:text="'Tax Cut: -' + ${paycheck.getTaxCut()} + '%'">tax cut</h3>
+    <h3 th:text="'Deductions: -$' + ${paycheck.getTotalDeductions()}">deductions</h3>
+</div>
+
+</div>
+</div>
+</body>
+</html>

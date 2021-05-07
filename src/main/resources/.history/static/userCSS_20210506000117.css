@@ -1,0 +1,54 @@
+body{
+    background-color:#5cdb95;
+}
+
+#pageTitle {
+    color: #db6b5c;
+    font-size: 100px;
+    text-align: center;
+}
+
+#sign-out input{
+    
+    width: 200px;
+    height: 50px;
+    border:none;
+    border-radius: 5px;
+    background-color:#db6b5c;
+    color:rgb(51, 51, 51);
+    font-size: 20px;
+}
+
+.container {
+    display: grid;
+    grid-template-rows: 10px;
+    grid-template-columns: 1fr;
+}
+
+.container-item{
+    text-align: center;
+    margin: 10px;
+    padding: 0px;
+    margin:0px;
+    padding: 0px;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 0px;
+    padding:0px;
+}
+
+nav button{
+    font-size: 20px;
+    margin: 30px;
+    background-color: #EDF5e1;
+    color:rgb(51, 51, 51);
+    width: 250px;
+    height: 70px;
+    align-self: center;
+    border:none;
+    border-radius: 5px;
+}

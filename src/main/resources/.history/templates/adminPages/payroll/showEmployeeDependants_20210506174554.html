@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+  <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+  <link href="../../../static/show.css" th:href="@{/show.css}" rel="stylesheet" />
+  <title>Dependant List</title>
+</head>
+<body>
+  <div class="container">
+<div th:align="center">
+  <h1 id="pageTitle"  th:text="${session.currentUser.getFirstName()} + '\'s Dependants'" th:unless="${session == null}">Employee's Name</h1>
+  <form th:action="@{/admin/ListEmployees}">
+    <button type="submit">Back</button>
+  </form>
+</div>
+<div>
+  <form th:align="center" th:action="@{'/admin/ListEmployees/showEmployeeDependents/add/'+ ${session.currentUser.getEmployeeID()}}" >
+    <button type="submit">Add Dependant</button>
+  </form>
+</div>
+<div align="center">
+
+  <br/>
+  <table>
+    <thead>
+    <tr>
+      <th>SSN</th>
+      <th>First Name</th>
+      <th>Last name</th>
+      <th>Relation</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr th:each="dependant: ${dependants}">
+        <td th:text="${dependant.getSsn()}">Salary Year</td>
+        <td th:text="${dependant.getFirstName()}">Total</td>
+        <td th:text="${dependant.getLastName()}">Salary Base</td>
+        <td th:text="${dependant.getRelation()}">Bonus Amount</td>
+        <td>
+          <form th:action="@{'/admin/ListEmployees/showEmployeeDependantBenefits/'+ ${session.currentUser.getEmployeeID()}+ '/'+ ${dependant.getId()}}" >
+            <button type="submit">Benefits</button>
+          </form>
+        </td>
+        <td>
+          <form th:action="@{'/admin/ListEmployees/showEmployeeDependents/delete/'+ ${session.currentUser.getEmployeeID()}+ '/'+ ${dependant.getSsn()}}" >
+            <button type="submit">Delete</button>
+          </form>
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
+
+</div>
+</div>
+</body>
+</html>

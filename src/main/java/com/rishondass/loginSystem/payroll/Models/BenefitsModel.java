@@ -1,101 +1,117 @@
 package com.rishondass.loginSystem.payroll.Models;
 
+import com.rishondass.loginSystem.payroll.IDS.BenefitsIDs;
+
 import javax.persistence.*;
-import java.util.List;
-import java.util.Set;
+
 
 @Entity
 @Table(name="benefits",schema="payroll")
-public class EmployeeModel {
+@IdClass(BenefitsIDs.class)
+public class BenefitsModel {
+
     @Id
-    @Column(name="benefitType")
+    @Column(name="benefittype")
     private String benefitType;
 
-    @Column(name="benefitName")
+    @Id
+    @Column(name="benefitname")
     private String benefitName;
 
     @Column(name="rate")
-    private int rate;
+    private double rate;
 
-    @Column(name="companyContribution")
-    private int companyContribution;
+    @Column(name="companycontribution")
+    private double companyContribution;
 
-    @Column(name="costPerPerson")
-    private int costPerPerson;
+    @Column(name= "numfamilymembers")
+    private int numFamilyMembers;
 
-    @Column(name="costPerFamily")
-    private int costPerFamily;
+    @Column(name="costperfamily",insertable = false,updatable = false)
+    private double costPerFamily;
 
-    @Column(name="ssn")
-    @Pattern(message="Invalid SSN Format", regexp = "^[0-9]{3}-[0-9]{2}-[0-9]{4}$")
-    public String ssn;
+    @Column(name="costperperson",insertable = false,updatable = false)
+    private double costPerPerson;
 
-    @Column(name = "parentSSN")
-    private String parentSSN;
 
-    //@OneToMany(cascade=CascadeType.ALL,targetEntity = AddressModel.class, mappedBy = "employeeID",orphanRemoval = true,fetch = FetchType.LAZY)
-    //private Set<AddressModel> addresses;
 
-    public void setBenefitType(String benefitType) {
-        this.benefitType = benefitType;
+
+    @Column(name="childssn")
+    private String childSsn;
+
+    @Column(name="parentssn")
+    private String parentSsn;
+
+    public int getNumFamilyMembers() {
+        return numFamilyMembers;
+    }
+
+    public void setNumFamilyMembers(int numFamilyMembers) {
+        this.numFamilyMembers = numFamilyMembers;
     }
 
     public String getBenefitType() {
         return benefitType;
     }
 
-    public void setBenefitName(String benefitName) {
-        this.state = benefitName;
+    public void setBenefitType(String benefitType) {
+        this.benefitType = benefitType;
     }
 
     public String getBenefitName() {
         return benefitName;
     }
 
-    public void setRate(int rate) {
-        this.year = rate;
+    public void setBenefitName(String benefitName) {
+        this.benefitName = benefitName;
     }
 
-    public int getRate() {
+    public double getRate() {
         return rate;
     }
 
-    public void setCompanyContribution(int companyContribution) {
-        this.companyContribution = companyContribution;
+    public void setRate(double rate) {
+        this.rate = rate;
     }
 
-    public int getCompanyContribution() {
+    public double getCompanyContribution() {
         return companyContribution;
     }
 
-    public void setCostPerPerson(int costPerPerson) {
-        this.costPerPerson = costPerPerson;
+    public void setCompanyContribution(double companyContribution) {
+        this.companyContribution = companyContribution;
     }
 
-    public int getCostPerPerson() {
+    public double getCostPerPerson() {
         return costPerPerson;
     }
 
-    public void setCostPerFamily(int costPerFamily) {
-        this.costPerFamily = costPerFamily;
+    public void setCostPerPerson(double costPerPerson) {
+        this.costPerPerson = costPerPerson;
     }
 
-    public int getCostPerFamily() {
+    public double getCostPerFamily() {
         return costPerFamily;
     }
 
-    public String getSsn() {
-        return ssn;
+    public void setCostPerFamily(double costPerFamily) {
+        this.costPerFamily = costPerFamily;
     }
 
-    public void setSsn(String ssn) {
-        this.ssn = ssn;
-    }
-    
-    public int getParentSSN() {
-        return parentSSN;
+    public String getChildSsn() {
+        return childSsn;
     }
 
-    public void setParentSSN(String parentSSN) {
-        this.parentSSN = parentSSN;
+    public void setChildSsn(String childSsn) {
+        this.childSsn = childSsn;
     }
+
+    public String getParentSsn() {
+        return parentSsn;
+    }
+
+    public void setParentSsn(String parentSsn) {
+        this.parentSsn = parentSsn;
+    }
+
+}

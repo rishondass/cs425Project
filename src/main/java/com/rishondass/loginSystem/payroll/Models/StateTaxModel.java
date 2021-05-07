@@ -1,15 +1,16 @@
 package com.rishondass.loginSystem.payroll.Models;
 
-import javax.persistence.*;
-import java.util.List;
-import java.util.Set;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-@Table(name="stateTaxRate",schema="payroll")
-public class EmployeeModel {
+@Table(name="statetax",schema="payroll")
+public class StateTaxModel {
     @Id
-    @Column(name="taxRate")
-    private int taxRate;
+    @Column(name="taxrate")
+    private double taxRate;
 
     @Column(name="state")
     private String state;
@@ -17,30 +18,27 @@ public class EmployeeModel {
     @Column(name="year")
     private int year;
 
-    //@OneToMany(cascade=CascadeType.ALL,targetEntity = AddressModel.class, mappedBy = "employeeID",orphanRemoval = true,fetch = FetchType.LAZY)
-    //private Set<AddressModel> addresses;
+    public double getTaxRate() {
+        return taxRate;
+    }
 
-    public void setTaxRate(int taxRate) {
+    public void setTaxRate(double taxRate) {
         this.taxRate = taxRate;
     }
 
-    public String getTaxRate() {
-        return taxRate;
+    public String getState() {
+        return state;
     }
 
     public void setState(String state) {
         this.state = state;
     }
 
-    public String getstate() {
-        return state;
+    public int getYear() {
+        return year;
     }
 
     public void setYear(int year) {
         this.year = year;
-    }
-
-    public String getyear() {
-        return year;
     }
 }

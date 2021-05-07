@@ -1,65 +1,88 @@
-package main.java.com.rishondass.loginSystem.payroll.Models;
+package com.rishondass.loginSystem.payroll.Models;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-@Table(name="W2",schema="payroll")
-
+@Table(name="w2",schema = "payroll")
 public class W2Model {
-	
-	@Column(name = "date")
-	private String date;
-	
-	@Column(name="ssn")
-	private String ssn;
+    @Id
+    @Column(name="daterange")
+    private String dateRange;
 
-	@Column(name="yearlyIncome")
-	private int yearlyIncome;
+    @Column(name="netincome",insertable = false,updatable = false)
+    private double netIncome;
 
-	@Column(name="deduction")
-	private int deduction;
+    @Column(name="ssn")
+    private String ssn;
 
-	@Column(name="extraEarnings")
-	private int extraEarnings;
+    @Column(name="grossincome")
+    private double grossIncome;
 
-	public String getDate() {
-		return date;
-	}
+    @Column(name="taxcut")
+    private double taxCut;
 
-	public void setDate(String date) {
-		this.date = date;
-	}
+    @Column(name="totaldeductions")
+    private double totalDeductions;
 
-	public String getSsn() {
-		return ssn;
-	}
+    @Column(name="extraearnings")
+    private double extraEarnings;
 
-	public void setSsn(String ssn) {
-		this.ssn = ssn;
-	}
+    public String getDateRange() {
+        return dateRange;
+    }
 
-	public int getYearlyIncome() {
-		return yearlyIncome;
-	}
+    public void setDateRange(String dateRange) {
+        this.dateRange = dateRange;
+    }
 
-	public void setYearlyIncome(int yearlyIncome) {
-		this.yearlyIncome = yearlyIncome;
-	}
+    public double getNetIncome() {
+        return netIncome;
+    }
 
-	public int getDeduction() {
-		return deduction;
-	}
+    public void setNetIncome(double netIncome) {
+        this.netIncome = netIncome;
+    }
 
-	public void setDeduction(int deduction) {
-		this.deduction = deduction;
-	}
+    public String getSsn() {
+        return ssn;
+    }
 
-	public int getExtraEarnings() {
-		return extraEarnings;
-	}
+    public void setSsn(String ssn) {
+        this.ssn = ssn;
+    }
 
-	public void setExtraEarnings(int extraEarnings) {
-		this.extraEarnings = extraEarnings;
-	}
-	
+    public double getGrossIncome() {
+        return grossIncome;
+    }
+
+    public void setGrossIncome(double grossIncome) {
+        this.grossIncome = grossIncome;
+    }
+
+    public double getTaxCut() {
+        return taxCut;
+    }
+
+    public void setTaxCut(double taxCut) {
+        this.taxCut = taxCut;
+    }
+
+    public double getTotalDeductions() {
+        return totalDeductions;
+    }
+
+    public void setTotalDeductions(double totalDeductions) {
+        this.totalDeductions = totalDeductions;
+    }
+
+    public double getExtraEarnings() {
+        return extraEarnings;
+    }
+
+    public void setExtraEarnings(double extraEarnings) {
+        this.extraEarnings = extraEarnings;
+    }
 }

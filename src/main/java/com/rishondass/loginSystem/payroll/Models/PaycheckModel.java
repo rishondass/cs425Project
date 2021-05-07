@@ -1,76 +1,88 @@
-package main.java.com.rishondass.loginSystem.payroll.Models;
+package com.rishondass.loginSystem.payroll.Models;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-@Table(name="Paycheck",schema="payroll")
-
+@Table(name="paycheck",schema = "payroll")
 public class PaycheckModel {
-	
-	@Column(name = "date")
-	private String date;
-	
-	@Column(name="ssn")
-	private String ssn;
+    @Id
+    @Column(name="daterange")
+    private String dateRange;
 
-	@Column(name="income")
-	private int income;
+    @Column(name="concatdaterange")
+    private String concatDateRange;
 
-	@Column(name="taxDeductions")
-	private int taxDeductions;
+    @Column(name="checktotal",insertable = false,updatable = false)
+    private double checkTotal;
 
-	@Column(name="deduction401k")
-	private int deduction401k;
+    @Column(name="ssn")
+    private String ssn;
 
-	@Column(name="insurancePremiums")
-	private String insurancePremiums;
+    @Column(name="grossincome")
+    private double grossIncome;
 
-	public String getDate() {
-		return date;
-	}
+    @Column(name="taxcut")
+    private double taxCut;
 
-	public void setDate(String date) {
-		this.date = date;
-	}
+    @Column(name="totaldeductions")
+    private double totalDeductions;
 
-	public String getSsn() {
-		return ssn;
-	}
+    public String getConcatDateRange() {
+        return concatDateRange;
+    }
 
-	public void setSsn(String ssn) {
-		this.ssn = ssn;
-	}
+    public void setConcatDateRange(String concatDateRange) {
+        this.concatDateRange = concatDateRange;
+    }
 
-	public int getIncome() {
-		return income;
-	}
+    public double getCheckTotal() {
+        return checkTotal;
+    }
 
-	public void setIncome(int income) {
-		this.income = income;
-	}
+    public void setCheckTotal(double checkTotal) {
+        this.checkTotal = checkTotal;
+    }
 
-	public int getTaxDeductions() {
-		return taxDeductions;
-	}
+    public String getDateRange() {
+        return dateRange;
+    }
 
-	public void setTaxDeductions(int taxDeductions) {
-		this.taxDeductions = taxDeductions;
-	}
+    public void setDateRange(String dateRange) {
+        this.dateRange = dateRange;
+    }
 
-	public int getDeduction401k() {
-		return deduction401k;
-	}
+    public String getSsn() {
+        return ssn;
+    }
 
-	public void setDeduction401k(int deduction401k) {
-		this.deduction401k = deduction401k;
-	}
+    public void setSsn(String ssn) {
+        this.ssn = ssn;
+    }
 
-	public String getInsurancePremiums() {
-		return insurancePremiums;
-	}
+    public double getGrossIncome() {
+        return grossIncome;
+    }
 
-	public void setInsurancePremiums(String insurancePremiums) {
-		this.insurancePremiums = insurancePremiums;
-	}
-	
+    public void setGrossIncome(double grossIncome) {
+        this.grossIncome = grossIncome;
+    }
+
+    public double getTaxCut() {
+        return taxCut;
+    }
+
+    public void setTaxCut(double taxCut) {
+        this.taxCut = taxCut;
+    }
+
+    public double getTotalDeductions() {
+        return totalDeductions;
+    }
+
+    public void setTotalDeductions(double totalDeductions) {
+        this.totalDeductions = totalDeductions;
+    }
 }

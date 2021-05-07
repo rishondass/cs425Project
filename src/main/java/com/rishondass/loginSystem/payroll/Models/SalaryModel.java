@@ -1,66 +1,79 @@
 package com.rishondass.loginSystem.payroll.Models;
 
+import com.rishondass.loginSystem.payroll.IDS.SalaryIDs;
+
 import javax.persistence.*;
-import java.util.List;
-import java.util.Set;
+import java.io.Serializable;
 
 @Entity
 @Table(name="salary",schema="payroll")
-public class EmployeeModel {
+@IdClass(SalaryIDs.class)
+public class SalaryModel implements Serializable {
     @Id
-    @Column(name="salary")
-    private int salary;
+    @Column(name="salarybase")
+    private double salaryBase;
 
-    @Column(name="salaryType")
-    private String state;
-
+    @Id
     @Column(name="year")
     private int year;
 
-    @Column(name="bonus")
-    private int bonus;
+    @Column(name="salarytype")
+    private String salaryType;
 
-    @Column(name="employeeID")
+    @Column(name="bonus")
+    private double bonus;
+
+    @Column(name="employeeid")
     private int employeeID;
 
-    //@OneToMany(cascade=CascadeType.ALL,targetEntity = AddressModel.class, mappedBy = "employeeID",orphanRemoval = true,fetch = FetchType.LAZY)
-    //private Set<AddressModel> addresses;
+    @Column(name="salarytotal",insertable = false)
+    private double salaryTotal;
 
-    public void setSalary(int salary) {
-        this.salary = salary;
+    public double getSalaryBase() {
+        return salaryBase;
     }
 
-    public String getSalary() {
-        return salary;
+    public void setSalaryBase(double salaryBase) {
+        this.salaryBase = salaryBase;
     }
 
-    public void setSalaryType(String salaryType) {
-        this.salaryType = salaryType;
-    }
-
-    public String getSalaryType() {
-        return salaryType;
+    public int getYear() {
+        return year;
     }
 
     public void setYear(int year) {
         this.year = year;
     }
 
-    public String getyear() {
-        return year;
+    public String getSalaryType() {
+        return salaryType;
     }
 
-    public void setBonus(int bonus) {
-        this.bonus = bonus;
+    public void setSalaryType(String salaryType) {
+        this.salaryType = salaryType;
     }
-    public String getBonus() {
+
+    public double getBonus() {
         return bonus;
+    }
+
+    public void setBonus(double bonus) {
+        this.bonus = bonus;
     }
 
     public int getEmployeeID() {
         return employeeID;
     }
+
     public void setEmployeeID(int employeeID) {
         this.employeeID = employeeID;
-    }    
+    }
+
+    public double getSalaryTotal() {
+        return salaryTotal;
+    }
+
+    public void setSalaryTotal(double salaryTotal) {
+        this.salaryTotal = salaryTotal;
+    }
 }
